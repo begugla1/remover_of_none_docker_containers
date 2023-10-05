@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+docker rmi $(docker images -a | grep -Po '(?<=\<none\>)\s+[a-z0-9]{12}')
+echo "'<none> images' deleted successfully!"
+
