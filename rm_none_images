@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
 docker rmi $(docker images -a | grep -Po '(?<=\<none\>)\s+[a-z0-9]{12}')
-echo "'<none> images' deleted successfully!"
+if [ ! $? = 0 ]; then
+  echo "Something goes wrong, maybe you haven't any <none> containers??"
+else
+  echo "none containers deleted successfully!!"
+fi
 
